@@ -9,13 +9,21 @@ public class WASD2 : MonoBehaviour
     private int i = 8;
     private Rigidbody2D square;
     private Color defaultColor = Color.yellow;
+    public GameObject pl2;
+    private bool spawn = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        pl2 = this.gameObject;
+    }
+
+    private void Start()
     {
         //Find the Rigidbody on the object this script is on
         square = GetComponent<Rigidbody2D>();
     }
+    
+
 
     // Update is called once per frame
     void Update()
@@ -24,51 +32,48 @@ public class WASD2 : MonoBehaviour
         if (Input.GetKey(KeyCode.L))
         {
             //make square move right
-            square.AddForce(Vector2.right *  forceamt);
+            square.AddForce(Vector2.right * forceamt);
         }
 
         //If statement to move right on screen by using A 
-        if (Input.GetKey(KeyCode.J)) 
+        if (Input.GetKey(KeyCode.J))
         {
             //make square move left
             square.AddForce(Vector2.left * forceamt);
         }
 
         //If statement to move down on screen by usind S 
-        if (Input.GetKey(KeyCode.K)) 
+        if (Input.GetKey(KeyCode.K))
         {
             //make square move down
             square.AddForce(Vector2.down * forceamt);
         }
-    
+
         //If statement to move up on screen by using W
-        if (Input.GetKey(KeyCode.I)) 
+        if (Input.GetKey(KeyCode.I))
         {
-            
+
             //make square move up
             square.AddForce(Vector2.up * forceamt);
         }
 
 
     }
-    //on collisionenter2D happens when two 2D obbjects with colliders hit each other
-    /*private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)  
+        
     {
-        //make the cube chanje color when it hits player 2 cube
-        if (collision.transform.tag == "Player1")
+        if (spawn)
         {
-            GetComponent<SpriteRenderer>().color = Color.magenta;
-        }
-        //Make the cube change color when it hits player 3 cube 
-        if (collision.transform.tag == "Player2")
-        {
-            GetComponent <SpriteRenderer>().color = Color.red;
+            spawn = false;
+            var pos = new Vector2(Random.Range(-9, 9), Random.Range(-2, 4));
+
+            Instantiate(pl2, pos, Quaternion.identity);
+            //Destroy player
+            Destroy(this.gameObject);
+            spawn = true;
         }
     }
-    //OnCollisionExit2D, happens when two 2D objects separate
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-     //Every time we exit, we want object to change back to original color
-     GetComponent<SpriteRenderer>().color = defaultColor;
-    }*/
+    //-9.47 and 9.41 X     -2.58 and 4.22 Y
 }
+
