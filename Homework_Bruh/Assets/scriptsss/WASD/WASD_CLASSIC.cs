@@ -10,7 +10,7 @@ public class WASD_CLASSIC : MonoBehaviour
     private int i = 8;
     private Rigidbody2D square;
     private Color defaultColor = Color.yellow;
-    public Game_Manager game_manager;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class WASD_CLASSIC : MonoBehaviour
         square = GetComponent<Rigidbody2D>();
 
         //Find the game manager
-        game_manager = FindObjectOfType<Game_Manager>();
+        
     }
 
     // Update is called once per frame
@@ -69,8 +69,7 @@ public class WASD_CLASSIC : MonoBehaviour
             GetComponent <SpriteRenderer>().color = Color.red;
         }
 
-        //score + 1
-        game_manager.sc_num++;
+        
     }
     //OnCollisionExit2D, happens when two 2D objects separate
     private void OnCollisionExit2D(Collision2D collision)

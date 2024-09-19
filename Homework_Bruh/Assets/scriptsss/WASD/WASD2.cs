@@ -11,16 +11,19 @@ public class WASD2 : MonoBehaviour
     private Color defaultColor = Color.yellow;
     public GameObject pl2;
     private bool spawn = true;
-
+    public Game_Manager gamemanager; 
     private void Awake()
     {
+
         pl2 = this.gameObject;
+        gamemanager = FindObjectOfType<Game_Manager>();
     }
 
     private void Start()
     {
         //Find the Rigidbody on the object this script is on
-        square = GetComponent<Rigidbody2D>();
+       // square = GetComponent<Rigidbody2D>();
+
     }
     
 
@@ -28,6 +31,7 @@ public class WASD2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         //If statement to move Right on screen by using D
         if (Input.GetKey(KeyCode.L))
         {
@@ -56,7 +60,7 @@ public class WASD2 : MonoBehaviour
             //make square move up
             square.AddForce(Vector2.up * forceamt);
         }
-
+        */
 
     }
 
@@ -65,8 +69,18 @@ public class WASD2 : MonoBehaviour
     {
         if (spawn)
         {
+
             spawn = false;
-            var pos = new Vector2(Random.Range(-9, 9), Random.Range(-2, 4));
+            if (collision.transform.tag == "Player1")
+            {
+
+                gamemanager.sc_num++;
+            } else if (collision.transform.tag == "Player3")
+            {
+                gamemanager.p3sc_num
+            }
+            
+              var pos = new Vector2(Random.Range(-9, 9), Random.Range(-2, 4));
 
             Instantiate(pl2, pos, Quaternion.identity);
             //Destroy player
