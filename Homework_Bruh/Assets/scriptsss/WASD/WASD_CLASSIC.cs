@@ -47,5 +47,16 @@ public class WASD_CLASSIC : MonoBehaviour
             //make square move up
             square.AddForce(Vector2.up * forceamt);
         }
-    }   
+
+
+    }
+    //on collisionenter2D happens when two 2D obbjects with colliders hit each other
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //make the cube chanje color when it hits player 2 cube
+        if (collision.transform.tag == "Player1")
+        {
+            GetComponent<SpriteRenderer>().color = Color.magenta;
+        }
+    }
 }
