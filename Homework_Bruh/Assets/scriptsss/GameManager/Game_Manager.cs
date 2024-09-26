@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Game_Manager : MonoBehaviour
     public TextMeshProUGUI p3score;
 
     public int p3sc_num;
+
+    private bool restart = true;
 
     //awake is called on spawn of this script before start
 
@@ -54,4 +57,14 @@ public class Game_Manager : MonoBehaviour
 
 
     }
+    public void StartGame() 
+    {
+        
+    if (restart)
+        {
+            SceneManager.LoadScene("game_scene");
+            restart = false;
+        }
+    }
+
 }

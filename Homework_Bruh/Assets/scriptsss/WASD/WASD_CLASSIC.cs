@@ -69,7 +69,7 @@ public class WASD_CLASSIC : MonoBehaviour
             GetComponent <SpriteRenderer>().color = Color.red;
         }
 
-        
+        Game_Manager.instance.StartGame();
     }
     //OnCollisionExit2D, happens when two 2D objects separate
     private void OnCollisionExit2D(Collision2D collision)
@@ -77,4 +77,5 @@ public class WASD_CLASSIC : MonoBehaviour
      //Every time we exit, we want object to change back to original color
      GetComponent<SpriteRenderer>().color = defaultColor;
     }
+
 }
