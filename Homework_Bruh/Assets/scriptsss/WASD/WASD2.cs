@@ -11,12 +11,13 @@ public class WASD2 : MonoBehaviour
     private Color defaultColor = Color.yellow;
     public GameObject pl2;
     private bool spawn = true;
-    public Game_Manager gamemanager; 
+    //public Game_Manager gamemanager; 
     private void Awake()
     {
 
         pl2 = this.gameObject;
-        gamemanager = FindObjectOfType<Game_Manager>();
+        //gamemanager = FindObjectOfType<Game_Manager>();
+        
     }
 
     private void Start()
@@ -74,10 +75,12 @@ public class WASD2 : MonoBehaviour
             if (collision.transform.tag == "Player1")
             {
 
-                gamemanager.sc_num++;
+                //gamemanager.sc_num++;
+                Game_Manager.instance.sc_num++;
             } else if (collision.transform.tag == "Player3")
             {
-                gamemanager.p3sc_num
+                //gamemanager.p3sc_num
+                Game_Manager.instance.p3sc_num++;
             }
             
               var pos = new Vector2(Random.Range(-9, 9), Random.Range(-2, 4));
